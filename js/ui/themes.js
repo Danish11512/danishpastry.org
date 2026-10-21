@@ -14,7 +14,6 @@ export const THEMES = {
       "--faint": "rgba(255,243,230,0.28)",
       "--chip": "rgba(255,243,230,0.12)",
       "--accent": "#ff8a3d",
-      "--accent2": "#ffd166",
       "--accent3": "#4f9d69",
     },
     poster: {
@@ -33,7 +32,6 @@ export const THEMES = {
       "--faint": "rgba(37,18,38,0.16)",
       "--chip": "rgba(37,18,38,0.08)",
       "--accent": "#ff4f81",
-      "--accent2": "#ffb347",
       "--accent3": "#7c5cff",
     },
     poster: {
@@ -52,7 +50,6 @@ export const THEMES = {
       "--faint": "rgba(255,255,255,0.2)",
       "--chip": "rgba(255,255,255,0.12)",
       "--accent": "#c026d3",
-      "--accent2": "#f0abfc",
       "--accent3": "#7c3aed",
     },
     poster: {
@@ -71,7 +68,6 @@ export const THEMES = {
       "--faint": "rgba(253,244,240,0.22)",
       "--chip": "rgba(253,244,240,0.1)",
       "--accent": "#ff5d8f",
-      "--accent2": "#ffc46b",
       "--accent3": "#9d7bff",
     },
     poster: {

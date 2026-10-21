@@ -1,4 +1,11 @@
-const COLORS = ["#ff5d8f", "#ffb347", "#7c5cff", "#4cd7d0", "#1a1523", "#ffd93d"];
+const COLORS = [
+  "#ff5d8f",
+  "#ffb347",
+  "#7c5cff",
+  "#4cd7d0",
+  "#f0abfc",
+  "#ffd93d",
+];
 
 /** Celebration service: fire a burst of confetti on a canvas. */
 export class Confetti {
@@ -45,7 +52,8 @@ export class Confetti {
         ctx.rotate(p.rot);
         ctx.globalAlpha = Math.max(0, 1 - (t - start) / 2400);
         ctx.fillStyle = p.color;
-        if (p.shape === "rect") ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2);
+        if (p.shape === "rect")
+          ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2);
         else {
           ctx.beginPath();
           ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
