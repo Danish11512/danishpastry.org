@@ -1,7 +1,7 @@
 /* ============================================================
    EVENT CONFIG — edit these, commit, push. That's it.
    inviteeName can also be set via ?to=Name in the URL.
-   theme: "ember" | "blush" | "midnight"  (see js/ui/themes.js)
+   theme: "rave" | "ember" | "blush" | "midnight"  (see js/ui/themes.js)
    details icons: see js/ui/icons.js (pin is added automatically);
    add href to make a row a link.
    sections: collapsible "The plan"-style accordions.
@@ -29,5 +29,5 @@ export const EVENT = {
     },
     { title: "What to know", body: "Just bring yourself." },
   ],
-  theme: "ember",
+  theme: "rave",
 };

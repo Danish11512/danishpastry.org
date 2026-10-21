@@ -6,7 +6,7 @@ Static invite page (Partiful-style) hosted on GitHub Pages at danishpastry.org.
 
 Edit `js/config.js` — title, host, start/end (local ISO time), location,
 detail rows (optional `href` makes a link), `sections` accordions,
-theme ("ember" | "blush" | "midnight").
+theme ("rave" | "ember" | "blush" | "midnight").
 Invitee name: set `inviteeName` there, or pass `?to=Name` in the URL.
 
 ## Deploy
@@ -27,7 +27,8 @@ js/config.js             EVENT config (edit me)
 js/app.js                composition root (wires dependencies)
 js/utils/dates.js        shared date helpers
 js/ui/themes.js          palette registry (add themes here)
-js/ui/Background.js      falling roses (canvas)
+assets/bg-lava*.mp4      lavaRave background video (mobile variant via source media)
+assets/sparkles.*        twinkle overlay video (mov=Safari hvc1, webm=others)
 js/ui/Poster.js          poster image or generated SVG art
 js/ui/icons.js           detail-row icon registry
 js/ui/InviteView.js      renders event details

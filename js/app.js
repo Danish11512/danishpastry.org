@@ -4,7 +4,6 @@
  */
 import { EVENT } from "./config.js";
 import { applyTheme } from "./ui/themes.js";
-import { Background } from "./ui/Background.js";
 import { Poster } from "./ui/Poster.js";
 import { InviteView } from "./ui/InviteView.js";
 import { GuestList } from "./ui/GuestList.js";
@@ -25,7 +24,6 @@ const invitee =
 
 const theme = applyTheme(EVENT.theme);
 
-new Background().start();
 new Poster(document.getElementById("poster")).render({
   title: event.title,
   host: event.host,

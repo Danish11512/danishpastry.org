@@ -44,6 +44,25 @@ export const THEMES = {
       dot: "rgba(255,255,255,0.55)",
     },
   },
+  rave: {
+    vars: {
+      "--bg": "#1f0011",
+      "--ink": "#ffffff",
+      "--muted": "rgba(255,255,255,0.6)",
+      "--faint": "rgba(255,255,255,0.2)",
+      "--chip": "rgba(255,255,255,0.12)",
+      "--accent": "#c026d3",
+      "--accent2": "#f0abfc",
+      "--accent3": "#7c3aed",
+    },
+    poster: {
+      g1: "#7c3aed",
+      g2: "#c026d3",
+      g3: "#f0abfc",
+      ink: "#ffffff",
+      dot: "rgba(255,255,255,0.4)",
+    },
+  },
   midnight: {
     vars: {
       "--bg": "#171015",
