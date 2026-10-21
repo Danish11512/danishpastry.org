@@ -46,12 +46,12 @@ export class Background {
     this.#orbs = Array.from({ length: 5 }, (_, i) => ({
       cx: Math.random(),
       cy: Math.random(),
-      ax: 0.08 + Math.random() * 0.12,   // drift amplitude (fraction of viewport)
+      ax: 0.08 + Math.random() * 0.12, // drift amplitude (fraction of viewport)
       ay: 0.08 + Math.random() * 0.12,
-      sx: 0.00004 + Math.random() * 0.00005,  // angular speed
+      sx: 0.00004 + Math.random() * 0.00005, // angular speed
       sy: 0.00004 + Math.random() * 0.00005,
       phase: Math.random() * Math.PI * 2,
-      r: 0.28 + Math.random() * 0.22,    // radius as fraction of min(viewport)
+      r: 0.28 + Math.random() * 0.22, // radius as fraction of min(viewport)
       color: this.#palette[TINTS[i % TINTS.length]],
     }));
   }
@@ -62,7 +62,7 @@ export class Background {
   }
 
   #draw(t) {
-    const { ctx } = { ctx: this.#ctx };
+    const ctx = this.#ctx;
     const w = innerWidth;
     const h = innerHeight;
     const base = Math.min(w, h);
@@ -72,15 +72,10 @@ export class Background {
       const y = (o.cy + Math.cos(t * o.sy + o.phase) * o.ay) * h;
       const r = o.r * base;
       const g = ctx.createRadialGradient(x, y, 0, x, y, r);
-      g.addColorStop(0, hexA(o.color, 0.5));
-      g.addColorStop(1, hexA(o.color, 0));
+      g.addColorStop(0, `color-mix(in srgb, ${o.color} 50%, transparent)`);
+      g.addColorStop(1, `color-mix(in srgb, ${o.color} 0%, transparent)`);
       ctx.fillStyle = g;
       ctx.fillRect(x - r, y - r, r * 2, r * 2);
     }
   }
-}
-
-function hexA(hex, alpha) {
-  const n = parseInt(hex.slice(1), 16);
-  return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${alpha})`;
 }

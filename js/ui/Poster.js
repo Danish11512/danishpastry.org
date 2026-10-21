@@ -30,15 +30,18 @@ export class Poster {
     grad.append(el("stop", { offset: "0", "stop-color": palette.g1 }));
     grad.append(el("stop", { offset: "0.55", "stop-color": palette.g2 }));
     grad.append(el("stop", { offset: "1", "stop-color": palette.g3 }));
-    const rot = el("animateTransform", {
-      attributeName: "gradientTransform",
-      type: "rotate",
-      from: "0 0.5 0.5",
-      to: "360 0.5 0.5",
-      dur: "45s",
-      repeatCount: "indefinite",
-    });
-    grad.append(rot);
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      grad.append(
+        el("animateTransform", {
+          attributeName: "gradientTransform",
+          type: "rotate",
+          from: "0 0.5 0.5",
+          to: "360 0.5 0.5",
+          dur: "45s",
+          repeatCount: "indefinite",
+        }),
+      );
+    }
     defs.append(grad);
     svg.append(defs);
 
