@@ -12,7 +12,15 @@ export class Poster {
     this.#el = el;
   }
 
-  render({ title, host, palette }) {
+  render({ title, host, palette, image }) {
+    if (image) {
+      const img = document.createElement("img");
+      img.src = image;
+      img.alt = title;
+      img.loading = "eager";
+      this.#el.replaceChildren(img);
+      return;
+    }
     const words = title.toUpperCase().split(/\s+/).slice(0, 4);
     const svg = document.createElementNS(NS, "svg");
     svg.setAttribute("viewBox", "0 0 460 340");

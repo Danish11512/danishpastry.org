@@ -31,6 +31,7 @@ new Poster(document.getElementById("poster")).render({
   title: event.title,
   host: event.host,
   palette: theme.poster,
+  image: event.posterImage,
 });
 new InviteView(event, invitee).render();
 const guestList = new GuestList({ host: event.host, invitee });

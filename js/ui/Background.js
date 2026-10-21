@@ -1,17 +1,16 @@
 /**
- * Ambient animated background — falling rose petals and rose blooms
- * drifting down behind the page, in romantic rose colors.
- * Respects prefers-reduced-motion (draws one static frame).
+ * Ambient animated background — roses drifting down behind the page,
+ * each drawn as a bloom: scalloped petal lobes plus an inner spiral,
+ * in romantic rose colors. Respects prefers-reduced-motion (static frame).
  */
-const PETAL_COLORS = [
-  "#e5383b",
-  "#ff4d6d",
-  "#ff8fa3",
-  "#ffb3c1",
-  "#ffd6de",
-  "#c9184a",
+const ROSES = [
+  ["#ff8fa3", "#d6516d"],
+  ["#ff4d6d", "#b31e3f"],
+  ["#e5383b", "#8f1d20"],
+  ["#ffb3c1", "#e07a90"],
+  ["#ffd6de", "#e89eb0"],
+  ["#c9184a", "#8c0d33"],
 ];
-const BLOOM_COLORS = ["#e5383b", "#c9184a", "#ff4d6d"];
 
 export class Background {
   #canvas;
@@ -47,32 +46,28 @@ export class Background {
 
   #seed() {
     const count = Math.max(
-      14,
-      Math.min(30, Math.round((innerWidth * innerHeight) / 55000)),
+      12,
+      Math.min(26, Math.round((innerWidth * innerHeight) / 60000)),
     );
-    this.#items = Array.from({ length: count }, (_, i) =>
-      this.#spawn(i % 5 === 0),
-    );
+    this.#items = Array.from({ length: count }, () => this.#spawn());
   }
 
-  #spawn(bloomSlot) {
-    const rose = bloomSlot && Math.random() < 0.6;
+  #spawn() {
+    const [base, shade] = ROSES[Math.floor(Math.random() * ROSES.length)];
     return {
-      bloomSlot,
-      type: rose ? "rose" : "petal",
       baseX: Math.random(),
       y: Math.random() * innerHeight * 1.2 - innerHeight * 0.2,
-      size: rose ? 10 + Math.random() * 7 : 8 + Math.random() * 13,
-      color: (rose ? BLOOM_COLORS : PETAL_COLORS)[
-        Math.floor(Math.random() * (rose ? BLOOM_COLORS : PETAL_COLORS).length)
-      ],
-      alpha: 0.5 + Math.random() * 0.4,
+      size: 11 + Math.random() * 12,
+      color: base,
+      shade,
+      alpha: 0.55 + Math.random() * 0.35,
       rot: Math.random() * Math.PI * 2,
-      vr: (Math.random() - 0.5) * 1.6, // tumble, rad/s
-      fall: 70 + Math.random() * 85, // px/s downward
+      vr: (Math.random() - 0.5) * 1.2, // tumble, rad/s
+      fall: 90 + Math.random() * 80, // px/s downward
       swayA: 30 + Math.random() * 60,
       swayF: 0.0004 + Math.random() * 0.0006,
       phase: Math.random() * Math.PI * 2,
+      lobes: 5 + Math.floor(Math.random() * 2), // 5–6 outer petals
     };
   }
 
@@ -84,7 +79,7 @@ export class Background {
       p.y += p.fall * dt;
       p.rot += p.vr * dt;
       if (p.y > innerHeight + p.size * 3) {
-        const fresh = this.#spawn(p.bloomSlot);
+        const fresh = this.#spawn();
         Object.assign(p, fresh, { y: -p.size * 3 });
       }
     }
@@ -98,25 +93,8 @@ export class Background {
     for (const p of this.#items) {
       const x =
         p.baseX * innerWidth + Math.sin(t * p.swayF + p.phase) * p.swayA;
-      if (p.type === "rose") this.#rose(x, p.y, p);
-      else this.#petal(x, p.y, p);
+      this.#rose(x, p.y, p);
     }
-  }
-
-  #petal(x, y, p) {
-    const ctx = this.#ctx;
-    const s = p.size;
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.rotate(p.rot);
-    ctx.globalAlpha = p.alpha;
-    ctx.fillStyle = p.color;
-    ctx.beginPath();
-    ctx.moveTo(0, -s);
-    ctx.bezierCurveTo(s * 1.1, -s * 0.5, s * 0.7, s * 0.65, 0, s);
-    ctx.bezierCurveTo(-s * 0.7, s * 0.65, -s * 1.1, -s * 0.5, 0, -s);
-    ctx.fill();
-    ctx.restore();
   }
 
   #rose(x, y, p) {
@@ -126,13 +104,34 @@ export class Background {
     ctx.translate(x, y);
     ctx.rotate(p.rot);
     ctx.globalAlpha = p.alpha;
-    ctx.strokeStyle = p.color;
-    ctx.lineWidth = s * 0.16;
+
+    // outer petal lobes — ruffled bloom silhouette
+    ctx.fillStyle = p.color;
+    for (let i = 0; i < p.lobes; i++) {
+      const a = (i / p.lobes) * Math.PI * 2;
+      ctx.beginPath();
+      ctx.arc(
+        Math.cos(a) * s * 0.5,
+        Math.sin(a) * s * 0.5,
+        s * 0.52,
+        0,
+        Math.PI * 2,
+      );
+      ctx.fill();
+    }
+    // bloom core
+    ctx.beginPath();
+    ctx.arc(0, 0, s * 0.62, 0, Math.PI * 2);
+    ctx.fill();
+
+    // inner spiral — the swirl that reads as a rose
+    ctx.strokeStyle = p.shade;
+    ctx.lineWidth = s * 0.13;
     ctx.lineCap = "round";
     ctx.beginPath();
-    const turns = 4.4 * Math.PI;
+    const turns = 2.6 * Math.PI;
     for (let a = 0; a <= turns; a += 0.15) {
-      const r = (a / turns) * s;
+      const r = s * 0.1 + (a / turns) * s * 0.5;
       const px = Math.cos(a) * r;
       const py = Math.sin(a) * r;
       if (a === 0) ctx.moveTo(px, py);

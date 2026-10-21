@@ -27,8 +27,8 @@ js/config.js             EVENT config (edit me)
 js/app.js                composition root (wires dependencies)
 js/utils/dates.js        shared date helpers
 js/ui/themes.js          palette registry (add themes here)
-js/ui/Background.js      falling rose petals (canvas)
-js/ui/Poster.js          SVG poster art (animated)
+js/ui/Background.js      falling roses (canvas)
+js/ui/Poster.js          poster image or generated SVG art
 js/ui/icons.js           detail-row icon registry
 js/ui/InviteView.js      renders event details
 js/ui/GuestList.js       guests avatar row

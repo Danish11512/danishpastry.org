@@ -21,6 +21,7 @@ export const EVENT = {
   ],
   description:
     "One evening. Good food, better company.\n\nI'll handle the plan — you just show up.",
+  posterImage: "assets/poster.png", // remove to use generated SVG art instead
   sections: [
     {
       title: "The plan",
