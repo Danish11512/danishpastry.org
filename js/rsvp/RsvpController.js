@@ -61,11 +61,6 @@ export class RsvpController {
     this.#showStatus(option);
     this.#guestList?.update(option.key === "going");
     if (option.confetti) this.#confetti.burst();
-    if (option.calendar) {
-      for (const p of this.#providers) {
-        if (p.auto) p.activate(this.#event);
-      }
-    }
   }
 
   #showStatus(option) {

@@ -8,7 +8,6 @@
  *   label    — button text
  *   icon     — inline SVG markup
  *   primary  — renders with the filled style
- *   auto     — fires activate() automatically when the guest picks "going"
  */
 export class CalendarProvider {
   get label() {
@@ -18,9 +17,6 @@ export class CalendarProvider {
     return "";
   }
   get primary() {
-    return false;
-  }
-  get auto() {
     return false;
   }
   /** @returns {HTMLElement} a button or anchor for the calendar action */

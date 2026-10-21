@@ -14,9 +14,6 @@ export class IcsCalendarProvider extends CalendarProvider {
   get primary() {
     return true;
   }
-  get auto() {
-    return true;
-  }
 
   createAction(event) {
     const btn = document.createElement("button");
@@ -38,7 +35,11 @@ export class IcsCalendarProvider extends CalendarProvider {
 
   #buildIcs(event) {
     const esc = (s) =>
-      s.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
+      s
+        .replace(/\\/g, "\\\\")
+        .replace(/;/g, "\\;")
+        .replace(/,/g, "\\,")
+        .replace(/\n/g, "\\n");
     return [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
