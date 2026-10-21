@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <div class="grain" aria-hidden="true"></div>
     <canvas id="confetti"></canvas>
 
     <header class="topbar">
@@ -20,47 +21,53 @@
       <button class="share-btn" id="share-btn" type="button">Share</button>
     </header>
 
-    <main class="page">
-      <p class="invite-chip" id="invite-chip"></p>
-      <h1 id="title"></h1>
-      <div class="poster" id="poster"></div>
-
-      <div class="when">
-        <p class="date" id="date-line"></p>
-        <p class="time" id="time-line"></p>
+    <main class="layout">
+      <div class="col-title">
+        <p class="invite-chip" id="invite-chip"></p>
+        <h1 id="title"></h1>
       </div>
 
-      <p class="hosted-label">Hosted by</p>
-      <div class="host-chip">
-        <span class="avatar" id="host-initial"></span>
-        <span class="host-name" id="host"></span>
-      </div>
-
-      <div class="rows" id="rows"></div>
-
-      <div id="rsvp-block">
-        <p class="section-label">Are you in?</p>
-        <div class="rsvp-buttons" id="rsvp-buttons"></div>
-      </div>
-
-      <div class="status" id="status">
-        <h2 id="status-title"></h2>
-        <p id="status-sub"></p>
-        <div class="cal-buttons" id="cal-buttons"></div>
-        <button class="change-rsvp" id="change-rsvp">Change my answer</button>
-      </div>
-
-      <p class="description" id="description"></p>
-
-      <section class="guests">
-        <div class="guests-head">
-          <h3>Guests</h3>
-          <span class="guest-count" id="guest-count"></span>
+      <aside class="col-side">
+        <div class="poster" id="poster"></div>
+        <div class="rsvp-card" id="rsvp-block">
+          <div class="rsvp-buttons" id="rsvp-buttons"></div>
         </div>
-        <div class="guest-avatars" id="guest-avatars"></div>
-      </section>
+        <div class="status" id="status">
+          <h2 id="status-title"></h2>
+          <p id="status-sub"></p>
+          <div class="cal-buttons" id="cal-buttons"></div>
+          <button class="change-rsvp" id="change-rsvp">Change my answer</button>
+        </div>
+      </aside>
 
-      <p class="footer">danishpastry.org</p>
+      <div class="col-info">
+        <div class="when">
+          <p class="date" id="date-line"></p>
+          <p class="time" id="time-line"></p>
+        </div>
+
+        <p class="hosted-label">♛ Hosted by</p>
+        <div class="host-chip">
+          <span class="avatar" id="host-initial"></span>
+          <span class="host-name" id="host"></span>
+        </div>
+
+        <div class="rows" id="rows"></div>
+
+        <p class="description" id="description"></p>
+
+        <div class="sections" id="sections"></div>
+
+        <section class="guests">
+          <div class="guests-head">
+            <h3>Guest List</h3>
+            <span class="guest-count" id="guest-count"></span>
+          </div>
+          <div class="guest-avatars" id="guest-avatars"></div>
+        </section>
+
+        <p class="footer">danishpastry.org</p>
+      </div>
     </main>
 
     <script type="module" src="js/app.js"></script>

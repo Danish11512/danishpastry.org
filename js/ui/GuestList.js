@@ -1,4 +1,4 @@
-/** The "Guests" section: host + invitee avatars and a small count line. */
+/** The "Guest List" section: host + invitee avatars and count line. */
 export class GuestList {
   #host;
   #invitee;
@@ -13,9 +13,11 @@ export class GuestList {
     const avatars = document.getElementById("guest-avatars");
     avatars.replaceChildren(
       this.#avatar(this.#host[0] || "D", false),
-      this.#avatar(this.#invitee ? this.#invitee[0] : "?", !this.#going)
+      this.#avatar(this.#invitee ? this.#invitee[0] : "?", !this.#going),
     );
-    document.getElementById("guest-count").textContent = this.#going ? "2 going" : "2 invited";
+    document.getElementById("guest-count").textContent = this.#going
+      ? "2 Going"
+      : "1 Going · 1 Invited";
   }
 
   /** Flip the invitee avatar to "going" and update the count. */

@@ -5,7 +5,8 @@ Static invite page (Partiful-style) hosted on GitHub Pages at danishpastry.org.
 ## Update the event
 
 Edit `js/config.js` — title, host, start/end (local ISO time), location,
-detail rows, description, theme ("blush" | "midnight").
+detail rows (optional `href` makes a link), `sections` accordions,
+theme ("ember" | "blush" | "midnight").
 Invitee name: set `inviteeName` there, or pass `?to=Name` in the URL.
 
 ## Deploy

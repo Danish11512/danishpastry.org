@@ -15,7 +15,7 @@ export class Poster {
   render({ title, host, palette }) {
     const words = title.toUpperCase().split(/\s+/).slice(0, 4);
     const svg = document.createElementNS(NS, "svg");
-    svg.setAttribute("viewBox", "0 0 400 500");
+    svg.setAttribute("viewBox", "0 0 460 340");
     svg.setAttribute("role", "img");
     svg.setAttribute("aria-label", title);
 
@@ -45,56 +45,56 @@ export class Poster {
     defs.append(grad);
     svg.append(defs);
 
-    svg.append(el("rect", { width: 400, height: 500, fill: "url(#pg)" }));
+    svg.append(el("rect", { width: 460, height: 340, fill: "url(#pg)" }));
     svg.append(
       el("circle", {
-        cx: 330,
-        cy: 90,
-        r: 130,
+        cx: 390,
+        cy: 55,
+        r: 115,
         fill: "rgba(255,255,255,0.14)",
         class: "p-orb",
       }),
     );
     svg.append(
       el("circle", {
-        cx: 40,
-        cy: 430,
-        r: 100,
+        cx: 30,
+        cy: 310,
+        r: 85,
         fill: "rgba(0,0,0,0.10)",
         class: "p-orb p-orb2",
       }),
     );
-    const s1 = sparkle(60, 90, 26, palette.ink);
+    const s1 = sparkle(58, 66, 22, palette.ink);
     s1.setAttribute("class", "p-sparkle");
-    const s2 = sparkle(350, 380, 34, palette.ink);
+    const s2 = sparkle(405, 275, 30, palette.ink);
     s2.setAttribute("class", "p-sparkle s2");
-    const s3 = sparkle(315, 300, 14, palette.dot);
+    const s3 = sparkle(370, 215, 12, palette.dot);
     s3.setAttribute("class", "p-sparkle s3");
     svg.append(s1, s2, s3);
 
     // Stacked title words — alternate solid / outlined, slight offsets.
-    const step = 86;
-    const y0 = 210 - ((words.length - 1) * step) / 2;
+    const step = 72;
+    const y0 = 178 - ((words.length - 1) * step) / 2;
     words.forEach((word, i) => {
       const t = el("text", {
-        x: i % 2 ? 46 : 30,
+        x: i % 2 ? 50 : 34,
         y: y0 + i * step,
         fill: i % 2 ? "none" : palette.ink,
         stroke: i % 2 ? palette.ink : "none",
         "stroke-width": 2.5,
-        "font-size": words.some((w) => w.length > 7) ? 62 : 74,
+        "font-size": words.some((w) => w.length > 7) ? 54 : 66,
         "font-weight": 800,
         "letter-spacing": "-2",
         "text-transform": "uppercase",
-        transform: `rotate(-3 ${i % 2 ? 46 : 30} ${y0 + i * step})`,
+        transform: `rotate(-3 ${i % 2 ? 50 : 34} ${y0 + i * step})`,
       });
       t.textContent = word;
       svg.append(t);
     });
 
     const sub = el("text", {
-      x: 30,
-      y: 460,
+      x: 34,
+      y: 316,
       fill: palette.ink,
       "font-size": 15,
       "font-weight": 700,
