@@ -3,18 +3,13 @@ import { ICONS } from "./icons.js";
 /** Renders the event details into the page. Single job: DOM output. */
 export class InviteView {
   #event;
-  #invitee;
 
-  constructor(event, invitee) {
+  constructor(event) {
     this.#event = event;
-    this.#invitee = invitee;
   }
 
   render() {
     const e = this.#event;
-    document.getElementById("invite-chip").textContent = this.#invitee
-      ? `For ${this.#invitee}`
-      : "A private invite";
     document.getElementById("title").textContent = e.title;
     document.title = `${e.title} — You're Invited`;
     document.getElementById("host").textContent = e.host;

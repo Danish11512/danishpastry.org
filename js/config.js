@@ -7,11 +7,11 @@
    sections: collapsible "The plan"-style accordions.
    ============================================================ */
 export const EVENT = {
-  inviteeName: "", // or use ?to=Name
-  title: "date night",
+  inviteeName: "Sway", // or use ?to=Name
+  title: "Danish and Sway Date Night",
   host: "Danish",
-  start: "2025-11-14T19:00:00", // local time, ISO format
-  end: "2025-11-14T22:30:00",
+  start: "2026-10-22T18:00:00", // local time, ISO format
+  end: "2026-10-22T22:30:00",
   location: "Somewhere nice",
   locationSub: "Full address shared the day of",
   details: [

@@ -8,7 +8,6 @@ import { Background } from "./ui/Background.js";
 import { Poster } from "./ui/Poster.js";
 import { InviteView } from "./ui/InviteView.js";
 import { GuestList } from "./ui/GuestList.js";
-import { ShareButton } from "./ui/ShareButton.js";
 import { Confetti } from "./ui/Confetti.js";
 import { RsvpStore } from "./rsvp/RsvpStore.js";
 import { RsvpController } from "./rsvp/RsvpController.js";
@@ -33,10 +32,9 @@ new Poster(document.getElementById("poster")).render({
   palette: theme.poster,
   image: event.posterImage,
 });
-new InviteView(event, invitee).render();
+new InviteView(event).render();
 const guestList = new GuestList({ host: event.host, invitee });
 guestList.render();
-new ShareButton(document.getElementById("share-btn"));
 
 new RsvpController({
   event,

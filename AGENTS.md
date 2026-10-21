@@ -32,7 +32,6 @@ js/ui/Poster.js          poster image or generated SVG art
 js/ui/icons.js           detail-row icon registry
 js/ui/InviteView.js      renders event details
 js/ui/GuestList.js       guests avatar row
-js/ui/ShareButton.js     copy-link button
 js/ui/Confetti.js        confetti service
 js/rsvp/rsvpOptions.js   RSVP option registry (extend here)
 js/rsvp/RsvpStore.js     localStorage persistence
