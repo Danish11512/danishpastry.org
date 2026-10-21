@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>You're Invited</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <canvas id="confetti"></canvas>
+
+    <main class="card">
+      <div class="hero"><span class="invite-pill">You're invited</span></div>
+      <div class="content">
+        <p class="for-line">An evening for <strong id="invitee">you</strong></p>
+        <h1 id="title"></h1>
+        <div class="host">
+          <span class="avatar" id="host-initial"></span>
+          <span
+            >Hosted by <strong id="host" style="color: var(--ink)"></strong
+          ></span>
+        </div>
+        <div class="details">
+          <div class="detail">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <rect x="3" y="5" width="18" height="16" rx="3" />
+              <path d="M3 10h18M8 3v4M16 3v4" />
+            </svg>
+            <span
+              ><span id="date-line"></span
+              ><span class="sub" id="time-line"></span
+            ></span>
+          </div>
+          <div class="detail">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z" />
+              <circle cx="12" cy="10" r="2.6" />
+            </svg>
+            <span id="location"></span>
+          </div>
+        </div>
+        <p class="description" id="description"></p>
+
+        <div id="rsvp-block">
+          <p class="rsvp-label">Are you in?</p>
+          <div class="rsvp-buttons" id="rsvp-buttons"></div>
+        </div>
+
+        <div class="status" id="status">
+          <h2 id="status-title"></h2>
+          <p id="status-sub"></p>
+          <div class="cal-buttons" id="cal-buttons"></div>
+          <button class="change-rsvp" id="change-rsvp">Change my answer</button>
+        </div>
+
+        <p class="footer">danishpastry.org</p>
+      </div>
+    </main>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
