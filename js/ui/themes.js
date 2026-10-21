@@ -10,7 +10,6 @@ export const THEMES = {
     vars: {
       "--bg": "#b8390f",
       "--ink": "#fff3e6",
-      "--paper": "#fff7f3",
       "--muted": "rgba(255,243,230,0.62)",
       "--faint": "rgba(255,243,230,0.28)",
       "--chip": "rgba(255,243,230,0.12)",
@@ -30,7 +29,6 @@ export const THEMES = {
     vars: {
       "--bg": "#f4e2ec",
       "--ink": "#251226",
-      "--paper": "#fff7f3",
       "--muted": "rgba(37,18,38,0.6)",
       "--faint": "rgba(37,18,38,0.16)",
       "--chip": "rgba(37,18,38,0.08)",
@@ -50,7 +48,6 @@ export const THEMES = {
     vars: {
       "--bg": "#171015",
       "--ink": "#fdf4f0",
-      "--paper": "#fdf4f0",
       "--muted": "rgba(253,244,240,0.6)",
       "--faint": "rgba(253,244,240,0.22)",
       "--chip": "rgba(253,244,240,0.1)",
