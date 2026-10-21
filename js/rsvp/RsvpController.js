@@ -14,13 +14,15 @@ export class RsvpController {
   #store;
   #providers;
   #confetti;
+  #guestList;
   #els;
 
-  constructor({ event, store, providers, confetti }) {
+  constructor({ event, store, providers, confetti, guestList }) {
     this.#event = event;
     this.#store = store;
     this.#providers = providers;
     this.#confetti = confetti;
+    this.#guestList = guestList;
     this.#els = {
       rsvpBlock: document.getElementById("rsvp-block"),
       rsvpButtons: document.getElementById("rsvp-buttons"),
@@ -38,7 +40,10 @@ export class RsvpController {
 
     const saved = this.#store.get();
     const option = saved && findOption(saved);
-    if (option) this.#showStatus(option);
+    if (option) {
+      this.#showStatus(option);
+      this.#guestList?.update(option.key === "going");
+    }
   }
 
   #renderButtons() {
@@ -54,6 +59,7 @@ export class RsvpController {
   #select(option) {
     this.#store.set(option.key);
     this.#showStatus(option);
+    this.#guestList?.update(option.key === "going");
     if (option.confetti) this.#confetti.burst();
     if (option.calendar) {
       for (const p of this.#providers) {
@@ -81,5 +87,6 @@ export class RsvpController {
     this.#store.clear();
     this.#els.status.classList.remove("show");
     this.#els.rsvpBlock.style.display = "block";
+    this.#guestList?.update(false);
   }
 }

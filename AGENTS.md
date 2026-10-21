@@ -4,7 +4,8 @@ Static invite page (Partiful-style) hosted on GitHub Pages at danishpastry.org.
 
 ## Update the event
 
-Edit `js/config.js` — title, host, start/end (local ISO time), location, description.
+Edit `js/config.js` — title, host, start/end (local ISO time), location,
+detail rows, description, theme ("blush" | "midnight").
 Invitee name: set `inviteeName` there, or pass `?to=Name` in the URL.
 
 ## Deploy
@@ -20,11 +21,16 @@ http://localhost:8000.
 
 ```
 index.html               structure only
-css/style.css            all styles
+css/style.css            all styles (theme via CSS vars)
 js/config.js             EVENT config (edit me)
 js/app.js                composition root (wires dependencies)
 js/utils/dates.js        shared date helpers
+js/ui/themes.js          palette registry (add themes here)
+js/ui/Poster.js          SVG poster art
+js/ui/icons.js           detail-row icon registry
 js/ui/InviteView.js      renders event details
+js/ui/GuestList.js       guests avatar row
+js/ui/ShareButton.js     copy-link button
 js/ui/Confetti.js        confetti service
 js/rsvp/rsvpOptions.js   RSVP option registry (extend here)
 js/rsvp/RsvpStore.js     localStorage persistence
