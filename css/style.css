@@ -309,7 +309,7 @@ h1 {
   font-weight: 500;
   color: var(--muted);
 }
-.row.link span:first-of-type {
+.row.link > span:not(.row-icon) {
   text-decoration: underline;
 }
 

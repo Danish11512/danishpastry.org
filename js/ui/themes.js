@@ -50,7 +50,7 @@ export const THEMES = {
     vars: {
       "--bg": "#171015",
       "--ink": "#fdf4f0",
-      "--paper": "#241a22",
+      "--paper": "#fdf4f0",
       "--muted": "rgba(253,244,240,0.6)",
       "--faint": "rgba(253,244,240,0.22)",
       "--chip": "rgba(253,244,240,0.1)",
