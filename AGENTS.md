@@ -26,7 +26,8 @@ js/config.js             EVENT config (edit me)
 js/app.js                composition root (wires dependencies)
 js/utils/dates.js        shared date helpers
 js/ui/themes.js          palette registry (add themes here)
-js/ui/Poster.js          SVG poster art
+js/ui/Background.js      ambient animated canvas backdrop
+js/ui/Poster.js          SVG poster art (animated)
 js/ui/icons.js           detail-row icon registry
 js/ui/InviteView.js      renders event details
 js/ui/GuestList.js       guests avatar row

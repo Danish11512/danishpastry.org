@@ -20,19 +20,54 @@ export class Poster {
     svg.setAttribute("aria-label", title);
 
     const defs = el("defs");
-    const grad = el("linearGradient", { id: "pg", x1: "0", y1: "0", x2: "1", y2: "1" });
+    const grad = el("linearGradient", {
+      id: "pg",
+      x1: "0",
+      y1: "0",
+      x2: "1",
+      y2: "1",
+    });
     grad.append(el("stop", { offset: "0", "stop-color": palette.g1 }));
     grad.append(el("stop", { offset: "0.55", "stop-color": palette.g2 }));
     grad.append(el("stop", { offset: "1", "stop-color": palette.g3 }));
+    const rot = el("animateTransform", {
+      attributeName: "gradientTransform",
+      type: "rotate",
+      from: "0 0.5 0.5",
+      to: "360 0.5 0.5",
+      dur: "45s",
+      repeatCount: "indefinite",
+    });
+    grad.append(rot);
     defs.append(grad);
     svg.append(defs);
 
     svg.append(el("rect", { width: 400, height: 500, fill: "url(#pg)" }));
-    svg.append(el("circle", { cx: 330, cy: 90, r: 130, fill: "rgba(255,255,255,0.14)" }));
-    svg.append(el("circle", { cx: 40, cy: 430, r: 100, fill: "rgba(0,0,0,0.10)" }));
-    svg.append(sparkle(60, 90, 26, palette.ink));
-    svg.append(sparkle(350, 380, 34, palette.ink));
-    svg.append(sparkle(315, 300, 14, palette.dot));
+    svg.append(
+      el("circle", {
+        cx: 330,
+        cy: 90,
+        r: 130,
+        fill: "rgba(255,255,255,0.14)",
+        class: "p-orb",
+      }),
+    );
+    svg.append(
+      el("circle", {
+        cx: 40,
+        cy: 430,
+        r: 100,
+        fill: "rgba(0,0,0,0.10)",
+        class: "p-orb p-orb2",
+      }),
+    );
+    const s1 = sparkle(60, 90, 26, palette.ink);
+    s1.setAttribute("class", "p-sparkle");
+    const s2 = sparkle(350, 380, 34, palette.ink);
+    s2.setAttribute("class", "p-sparkle s2");
+    const s3 = sparkle(315, 300, 14, palette.dot);
+    s3.setAttribute("class", "p-sparkle s3");
+    svg.append(s1, s2, s3);
 
     // Stacked title words — alternate solid / outlined, slight offsets.
     const step = 86;
@@ -55,7 +90,8 @@ export class Poster {
     });
 
     const sub = el("text", {
-      x: 30, y: 460,
+      x: 30,
+      y: 460,
       fill: palette.ink,
       "font-size": 15,
       "font-weight": 700,
