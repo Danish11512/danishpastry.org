@@ -55,9 +55,10 @@ export class Background {
     );
   }
 
-  #spawn(isBloom) {
-    const rose = isBloom && Math.random() < 0.6;
+  #spawn(bloomSlot) {
+    const rose = bloomSlot && Math.random() < 0.6;
     return {
+      bloomSlot,
       type: rose ? "rose" : "petal",
       baseX: Math.random(),
       y: Math.random() * innerHeight * 1.2 - innerHeight * 0.2,
@@ -83,7 +84,7 @@ export class Background {
       p.y += p.fall * dt;
       p.rot += p.vr * dt;
       if (p.y > innerHeight + p.size * 3) {
-        const fresh = this.#spawn(p.type === "rose");
+        const fresh = this.#spawn(p.bloomSlot);
         Object.assign(p, fresh, { y: -p.size * 3 });
       }
     }
