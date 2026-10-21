@@ -26,7 +26,7 @@ const invitee =
 
 const theme = applyTheme(EVENT.theme);
 
-new Background(theme.poster).start();
+new Background().start();
 new Poster(document.getElementById("poster")).render({
   title: event.title,
   host: event.host,

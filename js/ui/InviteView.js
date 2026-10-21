@@ -86,10 +86,16 @@ export class InviteView {
       chev.className = "chev";
       chev.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>`;
       summary.append(label, chev);
+      const bodyWrap = document.createElement("div");
+      bodyWrap.className = "body-wrap";
       const body = document.createElement("div");
       body.className = "body";
-      body.textContent = s.body;
-      d.append(summary, body);
+      const inner = document.createElement("div");
+      inner.className = "body-inner";
+      inner.textContent = s.body;
+      body.appendChild(inner);
+      bodyWrap.appendChild(body);
+      d.append(summary, bodyWrap);
       wrap.appendChild(d);
     }
   }

@@ -132,12 +132,14 @@ h1 {
   height: auto;
 }
 
-/* ---------- floating RSVP pill ---------- */
+/* ---------- floating RSVP pill (translucent) ---------- */
 .rsvp-card {
-  background: var(--paper);
+  background: var(--chip);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
   border-radius: 999px;
   padding: 6px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
 }
 .rsvp-buttons {
   display: flex;
@@ -151,35 +153,34 @@ h1 {
   font-family: inherit;
   font-size: 15px;
   font-weight: 700;
-  color: #1d1220;
+  color: var(--ink);
   cursor: pointer;
   transition:
     background 0.15s ease,
     transform 0.12s ease;
 }
 .rsvp-btn:hover {
-  background: rgba(29, 18, 32, 0.07);
+  background: rgba(0, 0, 0, 0.1);
 }
 .rsvp-btn:active {
   transform: scale(0.97);
 }
 .rsvp-btn.primary {
-  background: #1d1220;
-  color: var(--paper);
-}
-.rsvp-btn.primary:hover {
-  background: #000;
+  background: var(--ink);
+  color: var(--bg);
 }
 
 /* ---------- status after RSVP ---------- */
 .status {
   display: none;
-  background: var(--paper);
-  color: #1d1220;
+  background: var(--chip);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  color: var(--ink);
   border-radius: 24px;
   padding: 26px 22px;
   text-align: center;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
 }
 .status.show {
   display: block;
@@ -191,7 +192,7 @@ h1 {
   margin-bottom: 6px;
 }
 .status p {
-  color: rgba(29, 18, 32, 0.6);
+  color: var(--muted);
   font-size: 14.5px;
   margin-bottom: 18px;
 }
@@ -208,13 +209,13 @@ h1 {
   width: 100%;
   padding: 13px;
   border-radius: 999px;
-  border: 1.5px solid #1d1220;
+  border: 1.5px solid var(--ink);
   font-family: inherit;
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
   text-decoration: none;
-  color: #1d1220;
+  color: var(--ink);
   background: transparent;
   transition: transform 0.12s ease;
 }
@@ -222,8 +223,9 @@ h1 {
   transform: translateY(-2px);
 }
 .cal-btn.primary {
-  background: #1d1220;
-  color: var(--paper);
+  background: var(--ink);
+  color: var(--bg);
+  border-color: transparent;
 }
 .change-rsvp {
   margin-top: 14px;
@@ -231,7 +233,7 @@ h1 {
   border: none;
   font-family: inherit;
   font-size: 14px;
-  color: rgba(29, 18, 32, 0.55);
+  color: var(--muted);
   text-decoration: underline;
   cursor: pointer;
 }
@@ -357,18 +359,36 @@ details.section summary::before {
 }
 details.section summary .chev {
   flex: none;
-  transition: transform 0.2s ease;
+  transition: transform 0.45s ease;
   opacity: 0.7;
 }
 details.section[open] summary .chev {
   transform: rotate(180deg);
 }
+/* slow open: grid-rows 0fr → 1fr animates height */
+details.section .body-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.6s cubic-bezier(0.35, 0, 0.15, 1);
+}
+details.section[open] .body-wrap {
+  grid-template-rows: 1fr;
+}
 details.section .body {
+  overflow: hidden;
+  min-height: 0;
+}
+details.section .body-inner {
   font-size: 14.5px;
   line-height: 1.6;
   color: var(--muted);
   padding: 10px 0 2px 19px;
   white-space: pre-line;
+  opacity: 0;
+  transition: opacity 0.4s ease 0.15s;
+}
+details.section[open] .body-inner {
+  opacity: 1;
 }
 
 /* ---------- guests ---------- */
